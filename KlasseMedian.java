@@ -39,9 +39,9 @@ public class ClassMedian {
 	}
 }
 
+
+
 // With boolean operators && + || 
-
-
 
 public class KlasseMedian { 
 	public static void main(String[] args) {
