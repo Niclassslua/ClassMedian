@@ -1,67 +1,72 @@
-package uebung01;
+package ClassMedian;
 
-import static pr.MakeItSimple.println;
-import static pr.MakeItSimple.readInt;
+// Without boolean operators (&& + ||)
 
-//Ohne boolsche Operatoren && und || 
-public class KlasseMedian {
+public class ClassMedian {
 	public static void main(String[] args) {
-		println("Gebe eine ganze Zahl ein (a): ");
-		int a = readInt();
+		System.out.println("Enter an integer (a): ");
+		int a = ScannerObject.nextInt();
 
-		println("Gebe eine ganze Zahl ein (b): ");
-		int b = readInt();
+		System.out.println("Enter an integer (b): ");
+		int b = ScannerObject.nextInt();
 
-		println("Gebe eine ganze Zahl ein (c): ");
-		int c = readInt();
+		System.out.println("Enter an integer (c): ");
+		int c = ScannerObject.nextInt();
 
-		println(a + ", " + b + ", " + c);
+		System.out.println(a + ", " + b + ", " + c);
 
 		int median;
 
-		if (a <= b) { // Hierdurch kann noch keine aussage getroffen werden, da wir nicht wissen wo c
-						// liegt.
-			if (b <= c) { // Durch transitivität gilt, dass b der Median ist.
+		if (a <= b) { // This does not give any information, because we do not know where c is.
+			if (b <= c) { // By transitivity (aka. Implication logic), b is said to be the median.
 				median = b;
-			} else if (a <= c) { // Es gilt (b > c). Hierdurch kann noch keine aussage getroffen werden. a oder c
-									// könnten Median sein.
+			} else if (a <= c) { // b > c is valid. Hereby no statement can be made yet. a or c could be median.
 				median = c;
-			} else { // Es gilt (a < b) und (c < b) und (c < a).
+			} else { // It is true that a < b and c < b and c < a.
 				median = a;
 			}
-		} else { // Es gilt (a > b). Hierdurch kann noch keine aussage getroffen werden, da wir
-					// nicht wissen wo c liegt.
-			if (b >= c) { // Durch transitivität gilt, dass b der Median ist.
+		} else { // It is valid a > b. Hereby still no statement can be made, since we do not know where c lies.
+			if (b >= c) {
 				median = b;
-			} else if (a >= c) { // Es gilt (b < c). Hierdurch kann noch keine aussage getroffen werden. a oder c
-									// könnten Median sein.
+			} else if (a >= c) { // b > c is valid. Hereby no statement can be made yet. a or c could be median.
 				median = c;
-			} else { // Es gilt (b < a) und (b < c) und (a < c).
+			} else { // It is true that b < a and b < c and a < c.
 				median = a;
 			}
 		}
 
-		println("Der Median hat den Wert " + median);
+		System.out.println("The median has the value " + median);
 	}
 }
 
-// Mit boolschen Operatoren && und || 
-/*
- * public class KlasseMedian { public static void main(String[] args) {
- * println("Gebe eine ganze Zahl ein (a): "); int a = readInt();
- * 
- * println("Gebe eine ganze Zahl ein (b): "); int b = readInt();
- * 
- * println("Gebe eine ganze Zahl ein (c): "); int c = readInt();
- * 
- * println(a + ", " + b + ", " + c);
- * 
- * int median;
- * 
- * if ((b <= a && a <= c) || (c <= a && a <= b)) { median = a; } else if ((a <=
- * b && b <= c) || (c <= b && b <= a)) { median = b; } else { median = c; }
- * 
- * println(median);
- * 
- * } }
- */
+// With boolean operators && + || 
+
+
+
+public class KlasseMedian { 
+	public static void main(String[] args) {
+		System.out.println("Enter an integer (a): ");
+		int a = ScannerObject.nextInt();
+
+		System.out.println("Enter an integer (b): ");
+		int b = ScannerObject.nextInt();
+
+		System.out.println("Enter an integer (c): ");
+		int c = ScannerObject.nextInt();
+
+		System.out.println(a + ", " + b + ", " + c);
+
+		int median;
+
+		if ( (b <= a && a <= c) || (c <= a && a <= b) ) {
+			median = a;
+		} else if ( (a <= b && b <= c) || (c <= b && b <= a) ) {
+			median = b;
+		} else {
+			median = c;
+		}
+		
+			System.out.println("The median has the value " + median);
+		
+	} 
+}
