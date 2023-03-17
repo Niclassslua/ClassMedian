@@ -43,7 +43,7 @@ public class ClassMedian {
 
 // With boolean operators && + || 
 
-public class KlasseMedian { 
+public class ClassMedian { 
 	public static void main(String[] args) {
 		System.out.println("Enter an integer (a): ");
 		int a = ScannerObject.nextInt();
